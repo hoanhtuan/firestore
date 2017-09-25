@@ -14,6 +14,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { NavBarComponent } from './_layouts/ui-elements/nav-bar/nav-bar.component';
 import { FooterComponent } from './_layouts/ui-elements/footer/footer.component';
 import { SimpleLayoutComponent } from './_layouts/simple-layout/simple-layout.component';
+import {RegisterModule} from "./register/register.module";
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { SimpleLayoutComponent } from './_layouts/simple-layout/simple-layout.co
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     AppStoreModule,
     AuthModule,
+    RegisterModule,
     AppRoutingModule
 
   ],
