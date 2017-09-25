@@ -16,4 +16,8 @@ export class SellerRegisterPageComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit(seller){
+    console.log('Seller: ', seller);
+  }
+
 }
