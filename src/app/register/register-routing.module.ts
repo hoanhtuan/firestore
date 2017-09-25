@@ -1,15 +1,15 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {SellerRegisterComponent} from "./seller-register/seller-register.component";
-import {PublicLayoutComponent} from "../_layouts/public-layout/public-layout.component";
+import {SimpleLayoutComponent} from "../_layouts/simple-layout/simple-layout.component";
+import {SellerRegisterPageComponent} from "./seller-register-page/seller-register-page.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: PublicLayoutComponent,
+    component: SimpleLayoutComponent,
     children: [{
       path: 'register',
-      component: SellerRegisterComponent
+      component: SellerRegisterPageComponent
     }]
   }
 ];

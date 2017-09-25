@@ -5,38 +5,23 @@ import {PublicLayoutComponent} from './_layouts/public-layout/public-layout.comp
 
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   pathMatch: 'full',
-  //   component: PublicLayoutComponent,
-  //   children: [{
-  //     path: 'main',
-  //     component: HomePageComponent
-  //   }]
-  // },
   {
-    path: 'main',
-    component: HomePageComponent
+    path: 'home',
+    component: PublicLayoutComponent,
+    children: [{
+      path: '',
+      component: HomePageComponent
+    }]
   },
   {
     path: '',
-    redirectTo: 'main',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
     path: '**',
-    redirectTo: '/main',
+    redirectTo: 'home',
   }
-  // {
-  //   path: '',
-  //   redirectTo: 'main',
-  //   pathMatch: 'full',
-  // },
-  // {
-  //   path: '**',
-  //   redirectTo: 'main',
-  // }
-
 ];
 
 
