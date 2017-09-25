@@ -1,0 +1,81 @@
+/*---custom start-- */   
+.responsive-tabs  {
+      border: 0;
+      text-align: center;
+      margin: 60px auto;
+      max-width: 750px;
+}
+.responsive-tabs li {
+  min-width: 33%;
+}
+.responsive-tabs li.active a, .responsive-tabs li.active a:hover, .responsive-tabs li.active a:focus {
+   border: solid 1px #aaa;
+}
+
+.responsive-tabs li a, .responsive-tabs li a:hover {
+   border-radius: 0;
+   font-family: 'Montserrat', sans-serif;
+   font-size:16px;
+   font-weight:300 !important;
+   color:#666;
+   margin:0;
+   text-align: center;
+   text-transform: uppercase;
+   padding:20px;
+   border: solid 1px #aaa;
+}
+.responsive-tabs li a i, .accordion-link  i { color:#666666; margin-right:10px; }
+.responsive-tabs-container .accordion-link.active {
+    border: 1px solid #aaa;
+}
+
+.responsive-tabs-container .tab-pane {
+  margin-bottom: 15px;
+}
+.responsive-tabs-container .accordion-link {
+  display: none;
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  background-color: #f5f5f5;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  color: #333;
+}
+@media (max-width: 767px) {
+  .responsive-tabs-container.accordion-xs .nav-tabs {
+    display: none;
+  }
+  .responsive-tabs-container.accordion-xs .accordion-link {
+    display: block;
+  }
+  .responsive-tabs-container.accordion-xs .accordion-link.first {
+   margin-top: 30px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .responsive-tabs-container.accordion-sm .nav-tabs {
+    display: none;
+  }
+  .responsive-tabs-container.accordion-sm .accordion-link {
+    display: block;
+  }
+  .responsive-tabs-container.accordion-xs .accordion-link.first {
+    margin-top: 30px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .responsive-tabs-container.accordion-md .nav-tabs {
+    display: none;
+  }
+  .responsive-tabs-container.accordion-md .accordion-link {
+    display: block;
+  }
+}
+@media (min-width: 1200px) {
+  .responsive-tabs-container.accordion-lg .nav-tabs {
+    display: none;
+  }
+  .responsive-tabs-container.accordion-lg .accordion-link {
+    display: block;
+  }
+}

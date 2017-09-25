@@ -1,0 +1,30 @@
+{
+  "name": "Seller",
+  "properties": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "firstName",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "lastName",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "email",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "password",
+      "type": "string",
+      "required": true
+    }
+  ]
+}

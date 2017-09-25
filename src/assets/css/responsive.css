@@ -1,0 +1,195 @@
+@media only screen and (max-width : 1470px){
+.navbar-default .navbar-nav-menu { margin-left:15%;}
+}
+
+@media only screen and (max-width : 1388px){
+.navbar-default .navbar-nav-menu { margin-left:15px;}
+}
+
+@media only screen and (max-width : 1199px){
+.navbar-default .navbar-nav-menu { margin-left:10px;}
+.navbar-default .navbar-nav-menu > li { padding:0 ;}
+}
+
+@media only screen and (max-width : 1024px){
+.navbar-header { float: none;}
+.navbar-toggle { display: block;}
+.navbar-collapse {  border-top: 1px solid transparent;  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1); }
+.navbar-collapse.collapse { display: none!important;}
+.navbar-collapse.collapse.in { display: block!important;}
+.navbar-default .navbar-nav-menu, .navbar-nav { float: none!important; margin: 7.5px -15px; }
+.navbar-nav>li { float: none;}
+.navbar-nav>li>a { padding-top: 10px; padding-bottom: 10px;}
+.navbar-default .navbar-nav-menu { padding:0;}
+.navbar-default .nav-bar-social-menu { margin-left:-5px;  padding:15px 0; margin-top:0; margin-bottom:0;}
+.navbar-default .nav-bar-social-menu > li { margin-right:5px; float:left;}
+.navbar-default .dropdown-menu { left:15px; }
+.navbar-default .navbar-nav .open .dropdown-menu > li > a { color:#1a1a1a; }
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover { color:#1a1a1a; }
+
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+.pure-luxury h2 { margin:0;}
+.pure-luxury-text { font-size:19px; line-height: 32px; margin-top:20px; }
+.contact-detail-section .call-us { padding:50px 25px; }
+.reservation-box { padding:100px 30px !important; }
+.faq-section { max-width:494px; padding:100px 30px;  }
+.faq-section .accordion-faq .panel-group .panel { margin-bottom:19px; }
+.recent-posts-list ul li a { font-size:13px; }
+}
+
+@media only screen and (min-width : 992px){
+.reservation-box {
+    padding: 100px 64px 400px 0;
+    margin: 0 0 -300px 0;
+   }
+
+}
+
+
+@media only screen and (max-width : 991px){
+#search input[type="search"] { font-size:24px; }
+#search .btn { padding:8px 24px; }
+
+.find-destination-form-block { border-radius:20px; -moz-border-radius:20px; -webkit-border-radius:20px;}
+.find-destination-form-block .form-group { margin-bottom:20px;}
+h1.showcase-title { font-size:34px; }
+.home-page-2 h2  { font-size:24px; }
+
+.logos-section-block { border:0;}
+.section-title-header h2 { font-size:24px; }
+.youtube-title-header h2 { font-size:24px; }
+.testnimonial-text { padding-left:5px; margin-top:30px; }
+.logos-section-block .logo-block { padding:20px 0; }
+p.sub-title { font-size:15px; }
+.who-are-we-img { margin: 0 auto 20px; }
+.f-18 { font-size:16px; }
+.paragraph-18 { font-size:16px; }
+.section-block { padding:50px 0; }
+.map-img { padding:40px 0; }
+.footer-social-block ul.social-links li  { font-size:18px; }
+.footer-social-block { margin-bottom:20px;}
+.footer-margin-left  { padding-left:15px;}
+.about-content {bottom:60px;}
+.about-header h1 { font-size:36px; margin:0 0 20px 0; }
+.about-header h2 { font-size:28px; margin:0 0 20px 0; }
+.about-header p { font-size:18px; line-height:24px; }
+.blog-content { bottom:40px; }
+
+.pure-luxury { margin:0; }
+.pure-luxury h2 { font-size:24px; margin-top:22px; }
+.pure-luxury p { margin:0 0 25px 0; }
+.pure-luxury .btn-primary-brd { margin-bottom:20px;}
+.our-promise .tab-content .img-responsive { margin-bottom:40px;}
+
+.about-us-box p { margin-top:20px;}
+.pure-luxury-text { margin-top:30px; font-size:18px; line-height:30px;  }
+
+.our-partners { margin:0 0 30px 0;}
+.our-partners h2 { font-size:24px; }
+.our-partners p { font-size:16px; line-height:24px; }
+.our-partners-section2 p { font-size:16px; line-height:28px; }
+.meet-the-team-section { margin:0 0 30px 0; padding-bottom:20px;  }
+.meet-the-team-section h2 { font-size:24px; }
+.meet-the-team-section p { line-height:30px; }
+.our-promise { padding:50px 0; }
+.tab-box { margin:50px 0;}
+
+.destination-section { padding:50px 0; }
+.travel-defference { padding:50px 0; }
+.travel-defference h2 { font-size:24px;  }
+.travel-defference p { font-size:18px; margin:30px 0;  }
+.contact-detail-section { padding:50px 0; }
+.contact-detail-section .call-us h2 { font-size:18px; }
+.contact-detail-section .call-us { padding:35px 15px; }
+.blog-section-slider { padding:50px 0 20px 0; margin:0; }
+.blog-section-slider .carousel-indicators { bottom:-40px;  }
+.feature-gallery:hover .fg-overlay .fa-link { width:50px; height:50px; font-size:24px; padding-top:12px; }
+.feature-gallery:hover .fg-overlay .fa-search { width:50px; height:50px; font-size:24px; padding-top:12px; }
+.blog-main-box { padding:50px 0;}
+.reservation-left-contain h2 { font-size:24px; }
+.discover-central-world-container .row > div > .discover-spot-block .overlay-block h3 { font-size:20px; }
+
+.reservation-box { padding: 50px 30px;}
+.reservation-left-section { max-width:720px; float: none; margin:0 auto; }
+.faq-section { max-width:780px; margin:0 auto;  padding: 50px 30px;}
+.block-detail-cantain { padding:50px 0; }
+.block-detail-left h2 { font-size:18px;  }
+.block-detail-left p { line-height: 24px; }
+.block-detail-left .share-text { font-size:16px; }
+.block-detail-left .categories-tag { margin:0 0 30px 0; }
+.block-detail-right { margin-top:30px; }
+.recent-works-gallery ul li { margin:0 4px 8px 0; }
+.title-header-section { position:relative; margin-top:100px; }
+.reservation-left-contain .contact-form .form-group { margin-bottom:12px; }
+.reservation-left-contain .contact-form .form-control { padding:12px; font-size:14px; }
+.block-detail-left .relate-post-title { margin:50px 0; }
+.popular-recent-tab .border-bottom-sepater { clear: both;}
+.popular-recent-tab .blogtab .tabmainBox-section .blog-img { margin-bottom:15px; }
+.faq-section .accordion-faq .panel-title { font-size:16px; }
+
+}
+
+@media only screen and (max-width : 767px){
+.navbar-default .navbar-nav .open .dropdown-menu > li > a { color:#fff; }
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover { color:#009bff; }
+
+.showcase-content { bottom:80px;}
+.showcase-header { padding-bottom:150px;}
+h1.showcase-title { font-size:40px; }
+h1.showcase-title + p { font-size:24px;}
+.home-page-2 h2 { font-size:20px; }
+.blog-block { margin-bottom:20px;}
+.destination-block { margin:0 0 20px 0; }
+.destination-block .destination-info { padding:15px; }
+.destination-block .destination-info h3 { font-size:20px; }
+.destination-block .destination-info p { font-size:15px; }
+.destination-block .destination-info a { font-size:14px;}
+.map-img img { width:100%; }
+.our-partners-section-logos ul li { width:100%; text-align: center; }
+.tab-box .btn-group-justified > .btn, .btn-group-justified > .btn-group { width:100%; display:block; }
+.team-social-icon { margin-bottom:35px;}
+.meet-the-team-section-box .img-responsive { display: inline-block; }
+.section-block { padding:50px 0 15px 0; }
+.destination-section .gallery_product img { width:100%; }
+.travel-defference h2 { font-size:20px;  }
+.travel-defference p { font-size:16px; line-height:24px; margin:30px 0;  }
+.contact-detail-section .call-us { padding:30px 22px; margin-bottom:30px; }
+.blog-section-slider .carousel-caption { padding:5px 15px; font-size:13px;}
+#partner-logo-slider .owl-prev { left:0; }
+#partner-logo-slider .owl-next {right:0;}
+.block-detail-left .leave-a-comment .form-inline .form-group { width:100%; }
+.btn-rounded { margin-bottom:0; }
+.reservation-box { padding:50px 15px; }
+.faq-section { padding:50px 15px; }
+
+}
+
+@media only screen and (max-width : 650px){
+
+
+}
+
+@media only screen and (max-width : 580px){
+.showcase-content { bottom:30px;}
+.showcase-header { padding-bottom:80px;}
+h1.showcase-title { font-size:26px;margin-bottom:10px;}
+h1.showcase-title + p { font-size:16px;margin-bottom:10px;}
+.find-destination-form-block { padding:15px; border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px;}
+.find-destination-form-block .form-group { margin-bottom:10px;}
+.block-detail-left .share-icons { float: left; margin-top:10px; }
+
+}
+
+@media only screen and (max-width : 479px){
+.recent-posts-list ul li a { font-size:13px; }
+
+}
+
+@media only screen and (max-width : 359px){
+ h1.showcase-title,
+h1.showcase-title + p,
+.showcase-header a.btn { display:none}
+
+}

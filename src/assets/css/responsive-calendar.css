@@ -1,0 +1,82 @@
+.responsive-calendar {
+  padding: 15px;
+  border:solid 1px #ddd;
+}
+
+.responsive-calendar .controls {
+  text-align: center;
+  min-height:20px;
+  font-size:18px;
+}
+.responsive-calendar .controls a {
+  cursor: pointer;
+}
+.responsive-calendar .controls h4 {
+  display: inline;
+  margin-bottom: 0;
+  font-size:18px;
+}
+.responsive-calendar .day-headers,
+.responsive-calendar .days {
+  font-size: 0;
+}
+.responsive-calendar .day {
+  display: inline-block;
+  position: relative;
+  font-size: 14px;
+  width: 14.285714285714286%;
+  text-align: center;
+  padding-bottom:10px;
+}
+.responsive-calendar .day a {
+  color: #000000;
+  display: block;
+  cursor: pointer;
+  padding: 20% 0 20% 0;
+}
+.responsive-calendar .day a:hover {
+  background-color: #eee;
+  text-decoration: none;
+}
+.responsive-calendar .day.header {
+  border-bottom: 1px solid #ddd;
+}
+.responsive-calendar .day.active a {
+  background-color: #009bff;
+  color: #ffffff;
+}
+.responsive-calendar .day.active a:hover {
+  background-color: #36a0e2;
+}
+.responsive-calendar .day.active .not-current {
+  background-color: #8fcaef;
+  color: #ffffff;
+}
+.responsive-calendar .day.active .not-current:hover {
+  background-color: #bcdff5;
+}
+.responsive-calendar .day.select a {
+  background-color: #3399ad!important;
+  color: #ffffff;
+}
+
+
+.responsive-calendar .day.not-current a {
+  color: #ddd;
+}
+.responsive-calendar .day .badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  z-index: 1;
+  padding: 1px 3px!important;
+}
+
+
+.responsive-calendar  hr { border-color: #ddd; margin:15px 0 0 0;}
+.responsive-calendar .btn-arrow { color:#999; padding:0; border-radius:100%; width:30px; height:30px; line-height:30px; }
+.responsive-calendar .btn-arrow i:before { color:#999; font-size:18px;}
+.responsive-calendar .day.today a{background-color:#009bff; color: #fff; width: 30px;height: 30px;padding: 0;margin: 0 auto; border-radius:100%; line-height:28px;}
+.responsive-calendar .btn-arrow:hover { background-color:transparent; color: #666;}
+.responsive-calendar .day.header{ padding-bottom: 0; font-size: 16px; border:0;}
+.responsive-calendar .day a{padding:10% 0; color: #777;}
