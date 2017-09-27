@@ -6,6 +6,7 @@ import {storeLogger} from 'ngrx-store-logger';
 import {localStorageSync} from 'ngrx-store-localstorage';
 import {sellerReducer} from './seller/seller.reducer';
 import {authReducer} from './auth/auth.reducer';
+import {errorReducer} from "./shared/error/error.reducer";
 
 const reducers = compose(storeFreeze,
   localStorageSync({
@@ -19,7 +20,8 @@ const reducers = compose(storeFreeze,
     //List all reducers which are used in app. For example --> userState: userReducer
     routerReducer: routerReducer,
     sellerState: sellerReducer,
-    authState: authReducer
+    authState: authReducer,
+    errorState: errorReducer
   });
 
 // This is required for AOT

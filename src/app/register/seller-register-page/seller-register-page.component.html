@@ -1,3 +1,8 @@
-<seller-register-account-form (submit)="onSubmit($event)" [model]="model"></seller-register-account-form>
+<seller-register-account-form (submit)="onSubmit($event)"
+                              [model]="model"
+                              [error]="error$ | async"
+>
+</seller-register-account-form>
+
 
 

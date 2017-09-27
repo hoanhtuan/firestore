@@ -11,10 +11,11 @@ import {NgForm} from "@angular/forms";
 export class SellerRegisterAccountFormComponent {
   @ViewChild('f') form: NgForm;
   @Input() model = INITIAL_SELLER;
+  @Input() error = '';
   @Output() submit = new EventEmitter();
 
   constructor() {
-    this.model = _.cloneDeep(this.model);
+    //this.model = _.cloneDeep(this.model);
   }
 
   onSubmit() {

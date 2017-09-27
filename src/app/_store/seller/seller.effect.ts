@@ -7,6 +7,7 @@ import {ErrorAction} from '../shared/error/error.action';
 import {SellerService} from './seller.service';
 import {CreateSellerSuccessfulAction, GetAllSellersSuccessfulAction, SellerActionTypes} from './seller.action';
 import {of} from 'rxjs/observable/of';
+import {fromPromise} from "rxjs/observable/fromPromise";
 
 
 @Injectable()
@@ -15,13 +16,23 @@ export class SellerEffect {
   @Effect()
   create$: Observable<Action> = this.actions$
     .ofType(SellerActionTypes.CREATE)
-    .mergeMap((action) =>
-      of(this.sellerService.create(action.payload))
-        .map(() => {
+    .switchMap((action) => this.sellerService.create(action.payload)
+        .map((val) => {
           return new CreateSellerSuccessfulAction();
         })
         .catch(() => Observable.of(new ErrorAction('[Seller] - Create Fail')))
     );
+
+  // @Effect()
+  // create$: Observable<Action> = this.actions$
+  //   .ofType(SellerActionTypes.CREATE)
+  //   .map((action) => action.payload )
+  //   .switchMap(payload => of(this.sellerService.create(payload))
+  //   .map((test) => {
+  //     //console.log(test);
+  //     new CreateSellerSuccessfulAction()
+  //   }))
+  //   .catch(err => of (new ErrorAction('[Seller] - Create Fail')));
 
   @Effect()
   getAll$: Observable<Action> = this.actions$
