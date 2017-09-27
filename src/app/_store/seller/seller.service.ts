@@ -33,7 +33,7 @@ export class SellerService {
 
     return this.db.object(sellerPath);
   }
-  
+
   createUserWithEmailAndPassword(seller: Seller): Observable<any> {
     return Observable.of(this.auth.auth.createUserWithEmailAndPassword(seller.email, seller.password));
   }
