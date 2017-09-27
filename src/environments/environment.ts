@@ -6,11 +6,11 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyD0kNuVrPAfsY7c0ytxgPXdq5zPFuxo1qs",
-    authDomain: "ngrx-ce026.firebaseapp.com",
-    databaseURL: "https://ngrx-ce026.firebaseio.com",
-    projectId: "ngrx-ce026",
+    apiKey: "AIzaSyAubfCmoujX-LS3mx08d6Mxk397CjXDEho",
+    authDomain: "amex-webapp.firebaseapp.com",
+    databaseURL: "https://amex-webapp.firebaseio.com",
+    projectId: "amex-webapp",
     storageBucket: "",
-    messagingSenderId: "625231089125"
+    messagingSenderId: "863284800586"
   }
 };
