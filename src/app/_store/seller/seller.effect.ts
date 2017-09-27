@@ -13,14 +13,23 @@ import {fromPromise} from "rxjs/observable/fromPromise";
 @Injectable()
 export class SellerEffect {
 
-  @Effect()
-  create$: Observable<Action> = this.actions$
+  // @Effect()
+  // create$: Observable<Action> = this.actions$
+  //   .ofType(SellerActionTypes.CREATE)
+  //   .switchMap((action) => this.sellerService.create(action.payload)
+  //       .switchMap((val) =>  new CreateSellerSuccessfulAction())
+  //       .catch(() => Observable.of(new ErrorAction('[Seller] - Create Fail')))
+  //   );
+
+  @Effect() getVehicles$ = this.actions$
     .ofType(SellerActionTypes.CREATE)
-    .switchMap((action) => this.sellerService.create(action.payload)
-        .map((val) => {
-          return new CreateSellerSuccessfulAction();
+    .switchMap((action) =>
+      this.sellerService.create(action.payload)
+        .switchMap(result => {
+          console.log('result:', result)
+          return Observable.of(new CreateSellerSuccessfulAction())
         })
-        .catch(() => Observable.of(new ErrorAction('[Seller] - Create Fail')))
+        .catch(error => Observable.of(new ErrorAction('[Seller] - Create Fail xxx')))
     );
 
   // @Effect()
