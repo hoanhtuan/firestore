@@ -6,6 +6,8 @@ import {AppState} from "../app.state";
 import {Store} from "@ngrx/store";
 import {ErrorAction} from "../shared/error/error.action";
 import {Observable} from "rxjs/Observable";
+import * as _ from 'lodash';
+import {empty} from "rxjs/observable/empty";
 import {of} from "rxjs/observable/of";
 
 @Injectable()
@@ -31,21 +33,9 @@ export class SellerService {
 
     return this.db.object(sellerPath);
   }
-
-  create(seller: Seller): Observable<any> {
-    //seller = _.cloneDeep(seller);
-    return of(this.auth.auth.createUserWithEmailAndPassword(seller.email, seller.password))
-      // .then(() => {
-      //   this.auth.auth.signInWithEmailAndPassword(seller.email, seller.password)
-      //     .then(() => {
-      //       seller.seller_uid = this.auth.auth.currentUser.uid;
-      //       const sellerPath = `${this.basePath}/${seller.seller_uid}`;
-      //
-      //       return this.db.object(sellerPath).set(seller);
-      //     })
-      // })
-      // .catch(error => this.handleError(error))
-
+  
+  createUserWithEmailAndPassword(seller: Seller): Observable<any> {
+    return Observable.of(this.auth.auth.createUserWithEmailAndPassword(seller.email, seller.password));
   }
 
   update(seller: Seller): any {

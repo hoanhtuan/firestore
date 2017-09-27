@@ -16,7 +16,7 @@ export class SellerRegisterPageComponent implements OnInit {
   error$: Observable<string>;
 
   constructor(private store: Store<AppState>) {
-    this.error$ = this.store.select((state: AppState) => state.errorState.errorMessage)
+    this.error$ = this.store.select((state: AppState) => state.errorState.errorMessage);
   }
 
   ngOnInit() {

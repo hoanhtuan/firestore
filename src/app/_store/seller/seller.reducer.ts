@@ -6,11 +6,11 @@ import { SellerActionTypes } from './seller.action';
 export function sellerReducer(state: SellerState = INITIAL_SELLER_STATE, action: Action): SellerState {
 
   switch (action.type) {
-    // case SellerActionTypes.CREATE: {
-    //   const newState = _.cloneDeep(state);
-    //   newState.sellers = [...state.sellers, action.payload];
-    //   return newState;
-    // }
+    case SellerActionTypes.CREATE_SUCCESSFUL: {
+      const newState = _.cloneDeep(state);
+      newState.sellers = [...state.sellers, action.payload];
+      return newState;
+    }
 
     case SellerActionTypes.GET_ALL_SUCCESSFUL: {
       const newState = _.cloneDeep(state);

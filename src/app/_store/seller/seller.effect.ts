@@ -7,41 +7,46 @@ import {ErrorAction} from '../shared/error/error.action';
 import {SellerService} from './seller.service';
 import {CreateSellerSuccessfulAction, GetAllSellersSuccessfulAction, SellerActionTypes} from './seller.action';
 import {of} from 'rxjs/observable/of';
-import {fromPromise} from "rxjs/observable/fromPromise";
-
+import * as firebase from 'firebase/app';
+import {AuthService} from "../auth/auth.service";
+import {INITIAL_SELLER, Seller} from "./seller.model";
+import * as _ from 'lodash';
 
 @Injectable()
 export class SellerEffect {
+  tempSeller: Seller = INITIAL_SELLER;
 
-  // @Effect()
-  // create$: Observable<Action> = this.actions$
-  //   .ofType(SellerActionTypes.CREATE)
-  //   .switchMap((action) => this.sellerService.create(action.payload)
-  //       .switchMap((val) =>  new CreateSellerSuccessfulAction())
-  //       .catch(() => Observable.of(new ErrorAction('[Seller] - Create Fail')))
-  //   );
-
-  @Effect() getVehicles$ = this.actions$
+  @Effect() create$ = this.actions$
     .ofType(SellerActionTypes.CREATE)
-    .switchMap((action) =>
-      this.sellerService.create(action.payload)
-        .switchMap(result => {
-          console.log('result:', result)
-          return Observable.of(new CreateSellerSuccessfulAction())
+    .map((action) => {
+      this.tempSeller = action.payload;
+      return action.payload;
+    })
+    .switchMap((payload) =>
+      this.sellerService.createUserWithEmailAndPassword(payload)
+         .switchMap((result: Observable<firebase.User>) => result)
+         .switchMap(() => this.authService.signInWithEmailAndPassword(this.tempSeller.email, this.tempSeller.password))
+         .switchMap(() => this.authService.getUser())
+         .switchMap((user) => {
+           const newTempSeller: Seller = _.cloneDeep(this.tempSeller);
+           newTempSeller.seller_uid = user.uid;
+           return this.sellerService.update(newTempSeller);
         })
-        .catch(error => Observable.of(new ErrorAction('[Seller] - Create Fail xxx')))
+        .switchMap((user) =>  Observable.of(new CreateSellerSuccessfulAction(user)))
+        .catch(error => Observable.of(new ErrorAction(error)))
     );
 
-  // @Effect()
-  // create$: Observable<Action> = this.actions$
+  // @Effect() create$ = this.actions$
   //   .ofType(SellerActionTypes.CREATE)
-  //   .map((action) => action.payload )
-  //   .switchMap(payload => of(this.sellerService.create(payload))
-  //   .map((test) => {
-  //     //console.log(test);
-  //     new CreateSellerSuccessfulAction()
-  //   }))
-  //   .catch(err => of (new ErrorAction('[Seller] - Create Fail')));
+  //   .switchMap((action) =>
+  //     this.sellerService.createUserWithEmailAndPassword(action.payload)
+  //       .switchMap((result: Observable<firebase.User>)  => result)
+  //       .switchMap((user) => {
+  //         console.log(user.uid);
+  //         return  empty();
+  //       })
+  //       .catch(error => Observable.of(new ErrorAction(error)))
+  //   );
 
   @Effect()
   getAll$: Observable<Action> = this.actions$
@@ -97,7 +102,8 @@ export class SellerEffect {
   //   );
 
   constructor(private actions$: Actions,
-              private sellerService: SellerService) {
+              private sellerService: SellerService,
+              private authService: AuthService) {
   }
 
 }
