@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Observable';
 
 import * as userActions from './auth.action';
 import {AuthService} from './auth.service';
+import {ErrorAction} from "../shared/error/error.action";
 
 export type Action = userActions.All;
 
@@ -44,7 +45,7 @@ export class AuthEffect {
       return new userActions.GetUser();
     })
     .catch(err => {
-      return Observable.of(new userActions.AuthError({error: err.message}));
+      return Observable.of(new ErrorAction(err.message));
     });
 
 

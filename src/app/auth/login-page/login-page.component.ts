@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AppState} from "../../_store/app.state";
 import {Store} from "@ngrx/store";
 import {EmailLogin} from "../../_store/auth/auth.action";
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'app-login-page',
@@ -9,8 +10,10 @@ import {EmailLogin} from "../../_store/auth/auth.action";
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
-
-  constructor(private store: Store<AppState>) { }
+  error$: Observable<string>;
+  constructor(private store: Store<AppState>) {
+    this.error$ = this.store.select((state: AppState) => state.errorState.errorMessage);
+  }
 
   ngOnInit() {
   }
