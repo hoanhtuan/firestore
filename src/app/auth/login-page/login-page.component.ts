@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {AppState} from "../../_store/app.state";
+import {Store} from "@ngrx/store";
+import {EmailLogin} from "../../_store/auth/auth.action";
 
 @Component({
   selector: 'app-login-page',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
   }
 
+  onSubmit(user){
+    this.store.dispatch(new EmailLogin(user))
+  }
 }

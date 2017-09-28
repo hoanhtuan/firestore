@@ -58,14 +58,18 @@
             <span class="m-r-n-lg">Sign in</span>
           </button>
 
-          <div class="text-center">
-          <small>Forgot password?</small>
+          <div class="text-muted text-center">
+            <a [routerLink]="['/register/seller']">Forgot password?</a>
           </div>
           <div class="line line-dashed"></div>
           <p class="text-muted text-center">
           <small>Do not have an account?</small>
           </p>
-          <a href="signup.html" class="btn btn-lg btn-info btn-block rounded">Create an account</a>
+          <a [routerLink]="['/register/seller']" class="btn btn-lg btn-info btn-block rounded">Join as Seller</a>
+          <p class="text-muted text-center">
+            <small> or </small>
+          </p>
+          <a [routerLink]="['/register/seller']" class="btn btn-lg btn-info btn-block rounded">Join as Seller</a>
         </form>
 
       </section>
