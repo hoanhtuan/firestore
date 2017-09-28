@@ -15,7 +15,7 @@ export class SellerRegisterAccountFormComponent {
   @Output() submit = new EventEmitter();
 
   constructor() {
-    //this.model = _.cloneDeep(this.model);
+    this.model = _.cloneDeep(this.model);
   }
 
   onSubmit() {

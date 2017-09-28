@@ -4,7 +4,8 @@ import {AppState} from "../../_store/app.state";
 import {Store} from "@ngrx/store";
 import {CreateSellerAction} from "../../_store/seller/seller.action";
 import {Observable} from "rxjs/Observable";
-
+import * as _ from 'lodash';
+import {ResetErrorAction} from "../../_store/shared/error/error.action";
 
 @Component({
   selector: 'app-seller-register-page',
@@ -23,7 +24,8 @@ export class SellerRegisterPageComponent implements OnInit {
   }
 
   onSubmit(model) {
-    this.store.dispatch(new CreateSellerAction(model));
+    this.store.dispatch(new ResetErrorAction());
+    this.store.dispatch(new CreateSellerAction(_.cloneDeep(model)));
   }
 
 }
