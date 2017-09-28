@@ -20,7 +20,8 @@ export class SellerRegisterAccountFormComponent {
 
   onSubmit() {
     if (this.form.valid) {
-      this.submit.emit(this.model);
+      this.error = '';
+      this.submit.emit(_.cloneDeep(this.model));
     }
   }
 
