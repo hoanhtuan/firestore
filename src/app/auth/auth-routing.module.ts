@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {LoginPageComponent} from './login-page/login-page.component';
-import {SimpleLayoutComponent} from '../_layouts/simple-layout/simple-layout.component';
+import {PublicLayoutComponent} from "../_layouts/public-layout/public-layout.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: SimpleLayoutComponent,
+    component: PublicLayoutComponent,
     children: [{
       path: 'login',
       component: LoginPageComponent

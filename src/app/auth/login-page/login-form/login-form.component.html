@@ -1,0 +1,75 @@
+<section id="content" class="bg-dark dker animated fadeInUp">
+  <div class="container aside-xl">
+      <section class="m-b-lg">
+
+        <header class="crapper text-center">
+          <strong>Login here</strong>
+        </header>
+
+        <form novalidate
+              (ngSubmit)="onSubmit()"
+              #f="ngForm">
+
+          <div class="form-group"
+               [ngClass]="{
+                  'has-danger': email.invalid && (email.dirty || email.touched),
+                  'has-success': email.valid && (email.dirty || email.touched)
+             }">
+            <input type="text"
+                   class="form-control rounded input-lg text-center no-border"
+                   placeholder="Email"
+                   name="email"
+                   [(ngModel)]="model.email"
+                   required
+                   #email="ngModel">
+            <div class="form-error"
+                 *ngIf="email.errors && (email.dirty || email.touched)">
+              <p *ngIf="email.errors.required">Email is required</p>
+            </div>
+          </div>
+
+          <div class="form-group"
+               [ngClass]="{
+                  'has-danger': password.invalid && (password.dirty || password.touched),
+                  'has-success': password.valid && (password.dirty || password.touched)
+             }">
+
+            <input type="password"
+                   class="form-control rounded input-lg text-center no-border"
+                   placeholder="Password"
+                   name="password"
+                   [(ngModel)]="model.password"
+                   required
+                   #password="ngModel">
+            <div class="form-error"
+                 *ngIf="password.errors && (password.dirty || password.touched)">
+              <p *ngIf="password.errors.required">Password is required</p>
+            </div>
+          </div>
+
+          <div class="form-error" *ngIf="error!==''">
+            <p> {{error}} </p>
+          </div>
+
+          <button type="submit"
+                  class="btn btn-lg btn-warning lt b-white b-2x btn-block btn-rounded"
+                  [disabled]="f.invalid">
+            <i class="icon-arrow-right pull-right"></i>
+            <span class="m-r-n-lg">Sign in</span>
+          </button>
+
+          <div class="text-center">
+          <small>Forgot password?</small>
+          </div>
+          <div class="line line-dashed"></div>
+          <p class="text-muted text-center">
+          <small>Do not have an account?</small>
+          </p>
+          <a href="signup.html" class="btn btn-lg btn-info btn-block rounded">Create an account</a>
+        </form>
+
+      </section>
+  </div>
+</section>
+
+

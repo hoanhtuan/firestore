@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: SimpleLayoutComponent,
     children: [{
-      path: 'register',
+      path: 'register/seller',
       component: SellerRegisterPageComponent
     }]
   }
