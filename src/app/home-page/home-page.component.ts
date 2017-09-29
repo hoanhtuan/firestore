@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {AppState} from "../_store/app.state";
+import {Store} from "@ngrx/store";
+import {GetUser} from "../_store/auth/auth.action";
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<AppState>) {
+
+  }
 
   ngOnInit() {
+    this.store.dispatch(new GetUser())
   }
 
 }

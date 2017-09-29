@@ -6,6 +6,7 @@ import {Observable} from 'rxjs/Observable';
 import * as userActions from './auth.action';
 import {AuthService} from './auth.service';
 import {ErrorAction} from "../shared/error/error.action";
+import {go} from "@ngrx/router-store";
 
 export type Action = userActions.All;
 
@@ -41,8 +42,7 @@ export class AuthEffect {
       return Observable.of(this.authService.signInWithEmailAndPassword(payload.email, payload.password));
     })
     .map(credential => {
-      // successful login
-      return new userActions.GetUser();
+      return go(['home']);
     })
     .catch(err => {
       return Observable.of(new ErrorAction(err.message));
