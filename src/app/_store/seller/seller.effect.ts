@@ -23,15 +23,15 @@ export class SellerEffect {
     })
     .switchMap((payload) =>
       this.sellerService.createUserWithEmailAndPassword(payload)
-         .switchMap((result) => result)
-         .switchMap(() => this.authService.signInWithEmailAndPassword(this.tempSeller.email, this.tempSeller.password))
-         .switchMap(() => this.authService.getUser())
-         .switchMap((user) => {
-           const newTempSeller: Seller = _.cloneDeep(this.tempSeller);
-           newTempSeller.seller_uid = user.uid;
-           return this.sellerService.update(newTempSeller);
+        .switchMap((result) => result)
+        .switchMap(() => this.authService.signInWithEmailAndPassword(this.tempSeller.email, this.tempSeller.password))
+        .switchMap(() => this.authService.getUser())
+        .switchMap((user) => {
+          const newTempSeller: Seller = _.cloneDeep(this.tempSeller);
+          newTempSeller.seller_uid = user.uid;
+          return this.sellerService.update(newTempSeller);
         })
-        .switchMap((user) =>  Observable.of(new CreateSellerSuccessfulAction(user)))
+        .switchMap((user) => Observable.of(new CreateSellerSuccessfulAction(user)))
         .catch(error => Observable.of(new ErrorAction(error)))
     );
 

@@ -9,20 +9,16 @@ export class AuthService {
 
   }
 
-  getUser(){
+  getUser() {
     return this.afAuth.authState;
   }
 
-  signInWithEmailAndPassword(email, password){
+  signInWithEmailAndPassword(email, password) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }
 
-  signOut(){
+  signOut() {
     this.afAuth.auth.signOut();
-  }
-
-  private handleError(error) {
-    console.log(error)
   }
 
 }

@@ -20,7 +20,7 @@ export class LoginFormComponent {
   onSubmit() {
     if (this.form.valid) {
       this.error = '';
-      this.submit.emit(_.cloneDeep(this.model));
+      this.submit.emit(this.form.value);
     }
   }
 }

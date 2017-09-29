@@ -16,10 +16,10 @@ export class NavBarComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.store.dispatch(new GetUser())
+    this.store.dispatch(new GetUser());
   }
 
   logout(){
-    this.store.dispatch(new Logout)
+    this.store.dispatch(new Logout);
   }
 }
