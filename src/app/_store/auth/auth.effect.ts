@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect} from '@ngrx/effects';
-import {User} from './auth.model';
+import {User} from './auth.state';
 import {Observable} from 'rxjs/Observable';
 
 import * as userActions from './auth.action';

@@ -1,9 +1,9 @@
 import * as userActions from './auth.action';
-import {User} from './auth.model';
+import {User} from "./auth.state";
 
 export type Action = userActions.All;
 const defaultUser = new User(null, 'GUEST');
-/// Reducer function
+
 export function authReducer(state: User = defaultUser, action: Action) {
   switch (action.type) {
 
