@@ -21,10 +21,11 @@
                    name="email"
                    [(ngModel)]="model.email"
                    required
-                   #email="ngModel">
+                   #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
             <div class="form-error"
                  *ngIf="email.errors && (email.dirty || email.touched)">
               <p *ngIf="email.errors.required">Email is required</p>
+              <p *ngIf="email.errors.pattern">Email's format is not correct</p>
             </div>
           </div>
 

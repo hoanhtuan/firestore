@@ -8,6 +8,7 @@ import {AuthService} from './auth.service';
 import {ErrorAction} from "../shared/error/error.action";
 import {go} from "@ngrx/router-store";
 import {empty} from "rxjs/observable/empty";
+import {of} from "rxjs/observable/of";
 
 export type Action = userActions.All;
 
@@ -42,11 +43,12 @@ export class AuthEffect {
         return new userActions.Authenticated(user);
       } else {
         /// User not logged in
-        return new userActions.NotAuthenticated();
+        //return new userActions.NotAuthenticated();
+        return new ErrorAction('ERRROOOOOOR....');
       }
     })
     .catch(err => {
-      return Observable.of(new ErrorAction(err.message));
+      return Observable.of(new ErrorAction(err));
     })
   ;
 
