@@ -5,10 +5,10 @@ import {SellerRegisterPageComponent} from "./seller-register-page/seller-registe
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'register/seller',
     component: SimpleLayoutComponent,
     children: [{
-      path: 'register/seller',
+      path: '',
       component: SellerRegisterPageComponent
     }]
   }

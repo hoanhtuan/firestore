@@ -5,10 +5,10 @@ import {PublicLayoutComponent} from "../_layouts/public-layout/public-layout.com
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'login',
     component: PublicLayoutComponent,
     children: [{
-      path: 'login',
+      path: '',
       component: LoginPageComponent
     }]
   }

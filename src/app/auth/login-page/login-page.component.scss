@@ -4,3 +4,9 @@
 //.bg-dark .dker {
 //  background-color: #405161;
 //}
+
+ .test ::ng-deep {
+  color: green;
+  margin-top: 118px;
+  margin-bottom: 20px;
+}
