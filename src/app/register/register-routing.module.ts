@@ -5,12 +5,13 @@ import {SellerRegisterPageComponent} from "./seller-register-page/seller-registe
 
 const routes: Routes = [
   {
-    path: 'register/seller',
+    path: 'seller_register',
     component: SimpleLayoutComponent,
     children: [
       {
         path: '',
-        component: SellerRegisterPageComponent
+        redirectTo: 'account',
+        pathMatch: 'full',
       },
       {
         path: ':partialInfo',

@@ -2,9 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {INITIAL_SELLER, Seller} from "../../_store/seller/seller.model";
 import {AppState} from "../../_store/app.state";
 import {Store} from "@ngrx/store";
-import {CreateSellerAction} from "../../_store/seller/seller.action";
 import {Observable} from "rxjs/Observable";
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 
 @Component({
   selector: 'app-seller-register-page',
@@ -17,19 +16,44 @@ export class SellerRegisterPageComponent implements OnInit {
   error$: Observable<string>;
 
   constructor(private store: Store<AppState>,
-              private router: ActivatedRoute
+              private route: ActivatedRoute,
+              private router: Router
               ) {
     this.error$ = this.store.select((state: AppState) => state.errorState.errorMessage);
   }
 
   ngOnInit() {
-    this.router.params.subscribe((params: Params) => {
+    this.route.params.subscribe((params: Params) => {
       this.currentPage = params['partialInfo'];
     })
   }
 
   onSubmit(model) {
-    this.store.dispatch(new CreateSellerAction(model));
+    console.log(' onSubmit MODEL: ', this.model);
+    this.model = Object.assign(this.model, model);
+    switch (this.currentPage){
+      case 'account': {
+        return this.router.navigate(['seller_register/contact']);
+      }
+      case 'contact': {
+        return this.router.navigate(['seller_register/additional_information'])
+      }
+    }
   }
 
+  onBack(){
+    switch (this.currentPage){
+      case 'contact': {
+        return this.router.navigate(['seller_register/account']);
+      }
+      case 'additional_information': {
+        return this.router.navigate(['seller_register/contact'])
+      }
+    }
+  }
+
+  onSave() {
+    console.log('MODEL: ', this.model);
+    //this.store.dispatch(new CreateSellerAction(this.model));
+  }
 }

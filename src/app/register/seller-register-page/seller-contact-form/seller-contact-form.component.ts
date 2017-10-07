@@ -14,6 +14,7 @@ export class SellerRegisterContactFormComponent implements OnInit {
   @Input() model = INITIAL_SELLER;
   @Input() error = '';
   @Output() submit = new EventEmitter();
+  @Output() back = new EventEmitter();
 
   constructor() {
     this.model = _.cloneDeep(this.model);
@@ -27,6 +28,10 @@ export class SellerRegisterContactFormComponent implements OnInit {
       this.error = '';
       this.submit.emit(_.cloneDeep(this.model));
     }
+  }
+
+  onBack() {
+    this.back.emit();
   }
 
 }

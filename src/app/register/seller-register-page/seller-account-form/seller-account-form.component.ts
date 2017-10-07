@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
-import {INITIAL_SELLER, Seller} from '../../../_store/seller/seller.model';
+import {INITIAL_SELLER} from '../../../_store/seller/seller.model';
 import * as _ from 'lodash';
 import {NgForm} from "@angular/forms";
 

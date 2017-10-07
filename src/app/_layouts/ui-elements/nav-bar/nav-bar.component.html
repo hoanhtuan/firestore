@@ -18,7 +18,7 @@
         <li class="active"><a href="#">Home</a></li>
         <li><a href="about-us.html">About Us</a></li>
         <li><a href="faqs.html">FAQs</a></li>
-        <li><a [routerLink]="['/register/seller']">Join as Seller</a></li>
+        <li><a [routerLink]="['/seller_register']">Join as Seller</a></li>
         <li><a *ngIf="!(uid$ | async)" [routerLink]="['/login']">Login</a></li>
         <li><a *ngIf="!!(uid$ | async)" (click)="logout()">Logout</a></li>
       </ul>

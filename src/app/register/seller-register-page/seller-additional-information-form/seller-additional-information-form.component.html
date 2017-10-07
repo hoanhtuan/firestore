@@ -7,24 +7,30 @@
 
   <div class="form-group"
        [ngClass]="{
-          'has-danger': capacityStatement.invalid && (capacityStatement.dirty || capacityStatement.touched),
-          'has-success': capacityStatement.valid && (capacityStatement.dirty || capacityStatement.touched)
+          'has-danger': capability.invalid && (capability.dirty || capability.touched),
+          'has-success': capability.valid && (capability.dirty || capability.touched)
      }">
-    <label class="control-label">Capacity Statement</label>
+    <label class="control-label">Capability</label>
     <input type="text"
            class="form-control"
-           name="capacityStatement"
-           [(ngModel)]="model.capacityStatement"
-           #capacityStatement="ngModel">
+           name="capability"
+           [(ngModel)]="model.capability"
+           #capability="ngModel">
     <div class="form-error"
-         *ngIf="capacityStatement.errors && (capacityStatement.dirty || capacityStatement.touched)">
-      <p *ngIf="capacityStatement.errors.required">Capacity Statement is required</p>
+         *ngIf="capability.errors && (capability.dirty || capability.touched)">
+      <p *ngIf="capability.errors.required">Capability is required</p>
     </div>
   </div>
 
   <div class="form-error" *ngIf="error!==''">
     <p> {{error}} </p>
   </div>
+
+  <button type="button"
+          class="btn btn-primary"
+          (click)="onBack()"
+  >Back
+  </button>
 
   <button type="submit"
           class="btn btn-primary"

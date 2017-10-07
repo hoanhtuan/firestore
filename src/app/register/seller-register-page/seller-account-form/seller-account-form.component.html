@@ -71,12 +71,12 @@
            [(ngModel)]="model.password"
            #password="ngModel"
            required
-           minlength="6"
+           minlength= "6"
     >
     <div class="form-error"
          *ngIf="password.errors && (password.dirty || password.touched)">
       <p *ngIf="password.errors.required">Password is required</p>
-      <p *ngIf="password.errors.minLength">Password should be at least 6 characters</p>
+      <p *ngIf="password.errors.minlength">Password should be at least 6 characters</p>
     </div>
   </div>
 
@@ -172,12 +172,7 @@
 
   <button type="submit"
           class="btn btn-primary"
-          [disabled]="f.invalid">Submit
-  </button>
-
-  <button type="submit"
-          class="btn btn-primary"
-          [disabled]="f.invalid">Next
+          [disabled]="f.invalid"> Next
   </button>
 
 </form>

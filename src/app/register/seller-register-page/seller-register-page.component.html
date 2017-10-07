@@ -1,16 +1,21 @@
 <seller-register-account-form
-  *ngIf="currentPage=='account'"
-  (submit)="onSubmit($event)"
+  *ngIf="currentPage==='account'"
   [model]="model"
+  (submit)="onSubmit($event)"
   [error]="error$ | async"
 ></seller-register-account-form>
 
 <seller-register-contact-form
-  *ngIf="currentPage=='contact'"
+  [model]="model"
+  (submit)="onSubmit($event)"
+  (back)="onBack()"
+  *ngIf="currentPage==='contact'"
 ></seller-register-contact-form>
 
 <seller-additional-information-form
-  *ngIf="currentPage=='additional_information'"
+  *ngIf="currentPage==='additional_information'"
+  (back)="onBack()"
+  (submit)="onSubmit($event);"
 ></seller-additional-information-form>
 
 

@@ -27,9 +27,15 @@
     <p> {{error}} </p>
   </div>
 
+  <button type="button"
+          class="btn btn-primary"
+          (click)="onBack()"
+          >Back
+  </button>
+
   <button type="submit"
           class="btn btn-primary"
-          [disabled]="f.invalid">Submit
+          [disabled]="f.invalid">Next
   </button>
 
 </form>
