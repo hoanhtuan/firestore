@@ -5,8 +5,8 @@ import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'seller-register-account-form',
-  templateUrl: './seller-register-account-form.component.html',
-  styleUrls: ['./seller-register-account-form.component.scss']
+  templateUrl: './seller-account-form.component.html',
+  styleUrls: ['./seller-account-form.component.scss']
 })
 export class SellerRegisterAccountFormComponent {
   @ViewChild('f') form: NgForm;

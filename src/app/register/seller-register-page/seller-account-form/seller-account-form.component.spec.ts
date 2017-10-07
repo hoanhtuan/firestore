@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SellerRegisterAccountFormComponent } from './seller-register-account-form.component';
+import { SellerRegisterAccountFormComponent } from './seller-account-form.component';
 
 describe('SellerRegisterAccountFormComponent', () => {
   let component: SellerRegisterAccountFormComponent;

@@ -7,10 +7,16 @@ const routes: Routes = [
   {
     path: 'register/seller',
     component: SimpleLayoutComponent,
-    children: [{
-      path: '',
-      component: SellerRegisterPageComponent
-    }]
+    children: [
+      {
+        path: '',
+        component: SellerRegisterPageComponent
+      },
+      {
+        path: ':partialInfo',
+        component: SellerRegisterPageComponent
+      }
+    ]
   }
 ];
 
@@ -18,4 +24,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class RegisterRoutingModule { }
+export class RegisterRoutingModule {
+}
