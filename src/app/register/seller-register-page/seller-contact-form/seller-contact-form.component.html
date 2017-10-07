@@ -1,27 +1,81 @@
-<h1>
+<h2>
   Contact
-</h1>
+</h2>
 
 <form novalidate
       (ngSubmit)="onNext()"
       #f2="ngForm">
-
-  <div class="form-group"
-       [ngClass]="{
-          'has-danger': address.invalid && (address.dirty || address.touched),
-          'has-success': address.valid && (address.dirty || address.touched)
-     }">
-    <label class="control-label">Address</label>
-    <input type="text"
-           class="form-control"
-           name="address"
-           [(ngModel)]="model.address"
-           #address="ngModel">
-    <div class="form-error"
-         *ngIf="address.errors && (address.dirty || address.touched)">
-      <p *ngIf="address.errors.required">Address is required</p>
+  <fieldset ngModelGroup="address">
+    <div class="form-group"
+         [ngClass]="{
+            'has-danger': street_address.invalid && (street_address.dirty || street_address.touched),
+            'has-success': street_address.valid && (street_address.dirty || street_address.touched)
+       }">
+      <label class="control-label">Street Address</label>
+      <input type="text"
+             class="form-control"
+             name="street_address"
+             [(ngModel)]="model.address.street_address"
+             required
+             #street_address="ngModel">
+      <div class="form-error"
+           *ngIf="street_address.errors && (street_address.dirty || street_address.touched)">
+        <p *ngIf="street_address.errors.required">Street Address is required</p>
+      </div>
     </div>
-  </div>
+    <div class="form-group"
+         [ngClass]="{
+            'has-danger': city.invalid && (city.dirty || city.touched),
+            'has-success': city.valid && (city.dirty || city.touched)
+       }">
+      <label class="control-label">City</label>
+      <input type="text"
+             class="form-control"
+             name="city"
+             [(ngModel)]="model.address.city"
+             required
+             #city="ngModel">
+      <div class="form-error"
+           *ngIf="city.errors && (city.dirty || city.touched)">
+        <p *ngIf="city.errors.required">City is required</p>
+      </div>
+    </div>
+    <div class="form-group"
+         [ngClass]="{
+            'has-danger': state.invalid && (state.dirty || state.touched),
+            'has-success': state.valid && (state.dirty || state.touched)
+       }">
+      <label class="control-label">State</label>
+      <input type="text"
+             class="form-control"
+             name="state"
+             [(ngModel)]="model.address.state"
+             required
+             #state="ngModel">
+      <div class="form-error"
+           *ngIf="state.errors && (state.dirty || state.touched)">
+        <p *ngIf="state.errors.required">State is required</p>
+      </div>
+    </div>
+    <div class="form-group"
+         [ngClass]="{
+            'has-danger': phone.invalid && (phone.dirty || phone.touched),
+            'has-success': phone.valid && (phone.dirty || phone.touched)
+       }">
+      <label class="control-label">Phone</label>
+      <input type="text"
+             class="form-control"
+             name="phone"
+             [(ngModel)]="model.address.phone"
+             required
+             #phone="ngModel">
+      <div class="form-error"
+           *ngIf="phone.errors && (phone.dirty || phone.touched)">
+        <p *ngIf="phone.errors.required">Phone is required</p>
+      </div>
+    </div>
+  </fieldset>
+
 
   <div class="form-error" *ngIf="error!==''">
     <p> {{error}} </p>

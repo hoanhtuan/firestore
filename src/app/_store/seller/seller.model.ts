@@ -1,3 +1,5 @@
+import {Address, INITIAL_ADDRESS} from "./address.model";
+
 export interface Seller {
   seller_uid: string;
   first_name: string;
@@ -5,7 +7,7 @@ export interface Seller {
   email: string;
   password: string;
   profile_image: string;
-  address: string;
+  address: Address;
   industry: string;
   is_paiduser: string;
   subscription_level: string;
@@ -26,7 +28,7 @@ export const INITIAL_SELLER: Seller = {
   email: '',
   password: '',
   profile_image: '',
-  address: '',
+  address: INITIAL_ADDRESS,
   industry: '',
   is_paiduser: '',
   subscription_level: '',

@@ -76,6 +76,7 @@ export class SellerRegisterPageComponent implements OnInit {
   }
 
   onSave() {
+    console.log('MODEL: ',this.model)
     this.store.dispatch(new CreateSellerAction(_.cloneDeep(this.model)));
   }
 

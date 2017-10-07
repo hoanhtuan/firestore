@@ -1,4 +1,4 @@
-<h1> Account </h1>
+<h2> Account </h2>
 <form novalidate
       (ngSubmit)="onNext()"
       #f1="ngForm">
@@ -80,94 +80,21 @@
     </div>
   </div>
 
-
   <div class="form-group"
        [ngClass]="{
-          'has-danger': profile_image.invalid && (profile_image.dirty || profile_image.touched),
-          'has-success': profile_image.valid && (profile_image.dirty || profile_image.touched)
+          'has-danger': company.invalid && (company.dirty || company.touched),
+          'has-success': company.valid && (company.dirty || company.touched)
      }">
-    <label class="control-label">Profile Image</label>
+    <label class="control-label">Company</label>
     <input type="text"
            class="form-control"
-           name="profile_image"
-           [(ngModel)]="model.profile_image"
-           #profile_image="ngModel">
+           name="company"
+           [(ngModel)]="model.company"
+           #company="ngModel">
     <div class="form-error"
-         *ngIf="profile_image.errors && (profile_image.dirty || profile_image.touched)">
-      <p *ngIf="profile_image.errors.required">Profile Image is required</p>
+         *ngIf="company.errors && (company.dirty || company.touched)">
+      <p *ngIf="company.errors.required">Company is required</p>
     </div>
-  </div>
-
-  <div class="form-group"
-       [ngClass]="{
-          'has-danger': equipment.invalid && (equipment.dirty || equipment.touched),
-          'has-success': equipment.valid && (equipment.dirty || equipment.touched)
-     }">
-    <label class="control-label">Equipment</label>
-    <input type="text"
-           class="form-control"
-           name="equipment"
-           [(ngModel)]="model.equipment"
-           #equipment="ngModel">
-    <div class="form-error"
-         *ngIf="equipment.errors && (equipment.dirty || equipment.touched)">
-      <p *ngIf="equipment.errors.required">Equipment is required</p>
-    </div>
-  </div>
-
-  <div class="form-group"
-       [ngClass]="{
-          'has-danger': certifications_standards.invalid && (certifications_standards.dirty || certifications_standards.touched),
-          'has-success': certifications_standards.valid && (certifications_standards.dirty || certifications_standards.touched)
-     }">
-    <label class="control-label">Certifications and Standards</label>
-    <input type="text"
-           class="form-control"
-           name="certifications_standards"
-           [(ngModel)]="model.certifications_standards"
-           #certifications_standards="ngModel">
-    <div class="form-error"
-         *ngIf="certifications_standards.errors && (certifications_standards.dirty || certifications_standards.touched)">
-      <p *ngIf="certifications_standards.errors.required">Certifications and Standards is required</p>
-    </div>
-  </div>
-
-  <div class="form-group"
-       [ngClass]="{
-        'has-danger': capacity.invalid && (capacity.dirty || capacity.touched),
-        'has-success': capacity.valid && (capacity.dirty || capacity.touched)
-   }">
-    <label class="control-label">Capacity</label>
-    <input type="text"
-           class="form-control"
-           name="capacity"
-           [(ngModel)]="model.capacity"
-           #capacity="ngModel">
-    <div class="form-error"
-         *ngIf="capacity.errors && (capacity.dirty || capacity.touched)">
-      <p *ngIf="capacity.errors.required">Capacity is required</p>
-    </div>
-  </div>
-
-  <div class="form-group"
-       [ngClass]="{
-          'has-danger': availability.invalid && (availability.dirty || availability.touched),
-          'has-success': availability.valid && (availability.dirty || availability.touched)
-     }">
-    <label class="control-label">Availability</label>
-    <input type="text"
-           class="form-control"
-           name="availability"
-           [(ngModel)]="model.availability"
-           #availability="ngModel">
-    <div class="form-error"
-         *ngIf="availability.errors && (availability.dirty || availability.touched)">
-      <p *ngIf="availability.errors.required">Availability is required</p>
-    </div>
-  </div>
-
-  <div class="form-error" *ngIf="error!==''">
-    <p> {{error}} </p>
   </div>
 
   <button type="submit"
