@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: "AIzaSyD0kNuVrPAfsY7c0ytxgPXdq5zPFuxo1qs",
-    authDomain: "ngrx-ce026.firebaseapp.com",
-    databaseURL: "https://ngrx-ce026.firebaseio.com",
-    projectId: "ngrx-ce026",
-    storageBucket: "",
-    messagingSenderId: "625231089125"
+    apiKey: "AIzaSyCukeHI-Vb6YwnGvmAwXSXQSHKm6qI25dw",
+    authDomain: "amexexchange-llc-72c8f.firebaseapp.com",
+    databaseURL: "https://amexexchange-llc-72c8f.firebaseio.com",
+    projectId: "amexexchange-llc-72c8f",
+    storageBucket: "amexexchange-llc-72c8f.appspot.com",
+    messagingSenderId: "173787854874"
   }
 };
