@@ -28,6 +28,7 @@ export class SellerRegisterContactFormComponent implements OnInit {
       this.error = '';
       this.next.emit(_.cloneDeep(this.model));
     }
+    return false;
   }
 
   onBack() {

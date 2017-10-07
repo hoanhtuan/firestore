@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect} from '@ngrx/effects';
 import {Observable} from 'rxjs/Observable';
-import {Action} from '@ngrx/store';
+import {Action, Store} from '@ngrx/store';
 
 import {ErrorAction} from '../shared/error/error.action';
 import {SellerService} from './seller.service';
@@ -10,6 +10,8 @@ import {of} from 'rxjs/observable/of';
 import {AuthService} from "../auth/auth.service";
 import {INITIAL_SELLER, Seller} from "./seller.model";
 import * as _ from 'lodash';
+import {AppState} from "../app.state";
+import {go} from "@ngrx/router-store";
 
 @Injectable()
 export class SellerEffect {
@@ -32,7 +34,10 @@ export class SellerEffect {
           return this.sellerService.update(newTempSeller);
         })
         .switchMap((user) => Observable.of(new CreateSellerSuccessfulAction(user)))
-        .catch(error => Observable.of(new ErrorAction(error)))
+        .catch(error => {
+          this.store.dispatch(go(['seller_register/account']))
+          return Observable.of(new ErrorAction(error))
+        })
     );
 
   @Effect()
@@ -90,7 +95,8 @@ export class SellerEffect {
 
   constructor(private actions$: Actions,
               private sellerService: SellerService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private store: Store<AppState>) {
   }
 
 }
