@@ -1,3 +1,35 @@
 <h1>
   Contact
 </h1>
+
+<form novalidate
+      (ngSubmit)="onSubmit()"
+      #f="ngForm">
+
+  <div class="form-group"
+       [ngClass]="{
+          'has-danger': address.invalid && (address.dirty || address.touched),
+          'has-success': address.valid && (address.dirty || address.touched)
+     }">
+    <label class="control-label">Address</label>
+    <input type="text"
+           class="form-control"
+           name="address"
+           [(ngModel)]="model.address"
+           #address="ngModel">
+    <div class="form-error"
+         *ngIf="address.errors && (address.dirty || address.touched)">
+      <p *ngIf="address.errors.required">Address is required</p>
+    </div>
+  </div>
+
+  <div class="form-error" *ngIf="error!==''">
+    <p> {{error}} </p>
+  </div>
+
+  <button type="submit"
+          class="btn btn-primary"
+          [disabled]="f.invalid">Submit
+  </button>
+
+</form>

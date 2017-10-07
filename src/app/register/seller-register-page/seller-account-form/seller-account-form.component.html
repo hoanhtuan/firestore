@@ -48,10 +48,14 @@
            class="form-control"
            name="email"
            [(ngModel)]="model.email"
-           #email="ngModel">
+           #email="ngModel"
+           pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+           required
+    >
     <div class="form-error"
          *ngIf="email.errors && (email.dirty || email.touched)">
       <p *ngIf="email.errors.required">Email is required</p>
+      <p *ngIf="email.errors.pattern">Email is not formatted correctly</p>
     </div>
   </div>
 
@@ -65,10 +69,14 @@
            class="form-control"
            name="password"
            [(ngModel)]="model.password"
-           #password="ngModel">
+           #password="ngModel"
+           required
+           minlength="6"
+    >
     <div class="form-error"
          *ngIf="password.errors && (password.dirty || password.touched)">
       <p *ngIf="password.errors.required">Password is required</p>
+      <p *ngIf="password.errors.minLength">Password should be at least 6 characters</p>
     </div>
   </div>
 

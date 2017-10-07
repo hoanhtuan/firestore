@@ -1,3 +1,34 @@
 <h1>
   Additional Information
 </h1>
+<form novalidate
+      (ngSubmit)="onSubmit()"
+      #f="ngForm">
+
+  <div class="form-group"
+       [ngClass]="{
+          'has-danger': capacityStatement.invalid && (capacityStatement.dirty || capacityStatement.touched),
+          'has-success': capacityStatement.valid && (capacityStatement.dirty || capacityStatement.touched)
+     }">
+    <label class="control-label">Capacity Statement</label>
+    <input type="text"
+           class="form-control"
+           name="capacityStatement"
+           [(ngModel)]="model.capacityStatement"
+           #capacityStatement="ngModel">
+    <div class="form-error"
+         *ngIf="capacityStatement.errors && (capacityStatement.dirty || capacityStatement.touched)">
+      <p *ngIf="capacityStatement.errors.required">Capacity Statement is required</p>
+    </div>
+  </div>
+
+  <div class="form-error" *ngIf="error!==''">
+    <p> {{error}} </p>
+  </div>
+
+  <button type="submit"
+          class="btn btn-primary"
+          [disabled]="f.invalid">Submit
+  </button>
+
+</form>
