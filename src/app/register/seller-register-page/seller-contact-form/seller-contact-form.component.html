@@ -3,8 +3,8 @@
 </h1>
 
 <form novalidate
-      (ngSubmit)="onSubmit()"
-      #f="ngForm">
+      (ngSubmit)="onNext()"
+      #f2="ngForm">
 
   <div class="form-group"
        [ngClass]="{
@@ -35,7 +35,7 @@
 
   <button type="submit"
           class="btn btn-primary"
-          [disabled]="f.invalid">Next
+          [disabled]="f2.invalid">Next
   </button>
 
 </form>

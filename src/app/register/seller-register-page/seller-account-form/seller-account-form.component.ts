@@ -9,19 +9,19 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./seller-account-form.component.scss']
 })
 export class SellerRegisterAccountFormComponent {
-  @ViewChild('f') form: NgForm;
+  @ViewChild('f1') form: NgForm;
   @Input() model = INITIAL_SELLER;
   @Input() error = '';
-  @Output() submit = new EventEmitter();
+  @Output() next = new EventEmitter();
 
   constructor() {
     this.model = _.cloneDeep(this.model);
   }
 
-  onSubmit() {
+  onNext() {
     if (this.form.valid) {
       this.error = '';
-      this.submit.emit(_.cloneDeep(this.model));
+      this.next.emit(_.cloneDeep(this.model));
     }
   }
 

@@ -1,7 +1,7 @@
 <h1> Account </h1>
 <form novalidate
-      (ngSubmit)="onSubmit()"
-      #f="ngForm">
+      (ngSubmit)="onNext()"
+      #f1="ngForm">
 
   <div class="form-group"
        [ngClass]="{
@@ -172,7 +172,7 @@
 
   <button type="submit"
           class="btn btn-primary"
-          [disabled]="f.invalid"> Next
+          [disabled]="f1.invalid"> Next
   </button>
 
 </form>

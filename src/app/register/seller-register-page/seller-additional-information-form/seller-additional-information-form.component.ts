@@ -10,10 +10,10 @@ import * as _ from 'lodash';
 })
 export class SellerAdditionalInformationFormComponent implements OnInit {
 
-  @ViewChild('f') form: NgForm;
+  @ViewChild('f3') form: NgForm;
   @Input() model = INITIAL_SELLER;
   @Input() error = '';
-  @Output() submit = new EventEmitter();
+  @Output() save = new EventEmitter();
   @Output() back = new EventEmitter();
 
   constructor() {
@@ -24,10 +24,10 @@ export class SellerAdditionalInformationFormComponent implements OnInit {
 
   }
 
-  onSubmit() {
+  onSave() {
     if (this.form.valid) {
       this.error = '';
-      this.submit.emit(_.cloneDeep(this.model));
+      this.save.emit(_.cloneDeep(this.model));
     }
   }
 

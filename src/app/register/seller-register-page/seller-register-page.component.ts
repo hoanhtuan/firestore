@@ -4,6 +4,8 @@ import {AppState} from "../../_store/app.state";
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs/Observable";
 import {ActivatedRoute, Params, Router} from "@angular/router";
+import * as _ from 'lodash';
+import {CreateSellerAction} from "../../_store/seller/seller.action";
 
 @Component({
   selector: 'app-seller-register-page',
@@ -12,6 +14,10 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 })
 export class SellerRegisterPageComponent implements OnInit {
   currentPage: string = '';
+  isAccountFilledUp: boolean;
+  isContactFilledUp: boolean;
+  isAdditionalInformationFilledUp: boolean;
+
   model: Seller = INITIAL_SELLER;
   error$: Observable<string>;
 
@@ -28,16 +34,28 @@ export class SellerRegisterPageComponent implements OnInit {
     })
   }
 
-  onSubmit(model) {
-    console.log(' onSubmit MODEL: ', this.model);
-    this.model = Object.assign(this.model, model);
+  onNext(model) {
+    this.model = Object.assign(this.model, _.cloneDeep(model));
     switch (this.currentPage){
       case 'account': {
+        this.isAccountFilledUp = true
         return this.router.navigate(['seller_register/contact']);
       }
       case 'contact': {
-        return this.router.navigate(['seller_register/additional_information'])
+        if(!this.isAccountFilledUp){
+          return this.router.navigate(['seller_register/account'])
+        }else{
+          this.isContactFilledUp = true;
+          return this.router.navigate(['seller_register/additional_information'])
+        }
       }
+
+      case 'additional_information': {
+        if(!this.isContactFilledUp){
+          return this.router.navigate(['seller_register/contact'])
+        }
+      }
+
     }
   }
 
@@ -54,6 +72,6 @@ export class SellerRegisterPageComponent implements OnInit {
 
   onSave() {
     console.log('MODEL: ', this.model);
-    //this.store.dispatch(new CreateSellerAction(this.model));
+    this.store.dispatch(new CreateSellerAction(this.model));
   }
 }

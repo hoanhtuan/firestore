@@ -2,8 +2,8 @@
   Additional Information
 </h1>
 <form novalidate
-      (ngSubmit)="onSubmit()"
-      #f="ngForm">
+      (ngSubmit)="onSave()"
+      #f3="ngForm">
 
   <div class="form-group"
        [ngClass]="{
@@ -34,7 +34,7 @@
 
   <button type="submit"
           class="btn btn-primary"
-          [disabled]="f.invalid">Submit
+          [disabled]="f3.invalid">Submit
   </button>
 
 </form>

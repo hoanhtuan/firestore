@@ -10,10 +10,10 @@ import * as _ from 'lodash';
 })
 export class SellerRegisterContactFormComponent implements OnInit {
 
-  @ViewChild('f') form: NgForm;
+  @ViewChild('f2') form: NgForm;
   @Input() model = INITIAL_SELLER;
   @Input() error = '';
-  @Output() submit = new EventEmitter();
+  @Output() next = new EventEmitter();
   @Output() back = new EventEmitter();
 
   constructor() {
@@ -23,10 +23,10 @@ export class SellerRegisterContactFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() {
+  onNext() {
     if (this.form.valid) {
       this.error = '';
-      this.submit.emit(_.cloneDeep(this.model));
+      this.next.emit(_.cloneDeep(this.model));
     }
   }
 
