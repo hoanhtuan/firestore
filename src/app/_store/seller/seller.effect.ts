@@ -31,11 +31,15 @@ export class SellerEffect {
         .switchMap((user) => {
           const newTempSeller: Seller = _.cloneDeep(this.tempSeller);
           newTempSeller.seller_uid = user.uid;
+          newTempSeller.password = '';
           return this.sellerService.update(newTempSeller);
         })
-        .switchMap((user) => Observable.of(new CreateSellerSuccessfulAction(user)))
+        .switchMap((user) =>{
+          this.store.dispatch(go(['home']))
+          return Observable.of(new CreateSellerSuccessfulAction(user))
+        })
         .catch(error => {
-          this.store.dispatch(go(['seller_register/account']))
+          this.store.dispatch(go(['seller_register/account']));
           return Observable.of(new ErrorAction(error))
         })
     );
