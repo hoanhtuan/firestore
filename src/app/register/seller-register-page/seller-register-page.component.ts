@@ -16,7 +16,6 @@ export class SellerRegisterPageComponent implements OnInit {
   currentPage: string = '';
   isAccountFilledUp: boolean;
   isContactFilledUp: boolean;
-  isAdditionalInformationFilledUp: boolean;
 
   model: Seller = INITIAL_SELLER;
   error$: Observable<string>;
@@ -31,10 +30,27 @@ export class SellerRegisterPageComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       this.currentPage = params['partialInfo'];
+      // redirect user to first step if jumping directly to later steps
+      switch (this.currentPage){
+        case 'contact': {
+          if(!this.isAccountFilledUp){
+            this.router.navigate(['seller_register/account'])
+          }
+          break;
+        }
+
+        case 'additional_information': {
+          if(!this.isContactFilledUp){
+            this.router.navigate(['seller_register/account'])
+          }
+          break;
+        }
+      }
     })
   }
 
   onNext(model) {
+    //combine data from steps as 1 model then will be used to save
     this.model = Object.assign(this.model, _.cloneDeep(model));
     switch (this.currentPage){
       case 'account': {
@@ -42,20 +58,9 @@ export class SellerRegisterPageComponent implements OnInit {
         return this.router.navigate(['seller_register/contact']);
       }
       case 'contact': {
-        if(!this.isAccountFilledUp){
-          return this.router.navigate(['seller_register/account'])
-        }else{
-          this.isContactFilledUp = true;
-          return this.router.navigate(['seller_register/additional_information'])
-        }
+        this.isContactFilledUp = true;
+        return this.router.navigate(['seller_register/additional_information'])
       }
-
-      case 'additional_information': {
-        if(!this.isContactFilledUp){
-          return this.router.navigate(['seller_register/contact'])
-        }
-      }
-
     }
   }
 
@@ -71,7 +76,6 @@ export class SellerRegisterPageComponent implements OnInit {
   }
 
   onSave() {
-    console.log('MODEL: ', this.model);
     this.store.dispatch(new CreateSellerAction(this.model));
   }
 }
