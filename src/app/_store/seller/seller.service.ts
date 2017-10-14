@@ -1,51 +1,41 @@
 import {Injectable} from '@angular/core';
 import {Seller} from './seller.model';
-import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {AppState} from "../app.state";
 import {Store} from "@ngrx/store";
 import {ErrorAction} from "../shared/error/error.action";
 import {Observable} from "rxjs/Observable";
-import * as _ from 'lodash';
-import {empty} from "rxjs/observable/empty";
-import {of} from "rxjs/observable/of";
+import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from "angularfire2/firestore";
 
 @Injectable()
 export class SellerService {
-  private basePath: string = '/sellers';
-  sellers$: FirebaseListObservable<Seller[]>;
-  seller$: FirebaseObjectObservable<Seller> = null;
+  private sellers: string = 'sellers';
+  seller$: AngularFirestoreDocument<Seller> = null;
 
-  constructor(private store: Store<AppState>, private db: AngularFireDatabase, private auth: AngularFireAuth) {
+  constructor(private store: Store<AppState>, private afs : AngularFirestore, private auth: AngularFireAuth) {
 
   }
 
-  getAll(query = {}): FirebaseListObservable<Seller[]> {
-    this.sellers$ = this.db.list(this.basePath, {
-      query: query
-    })
-
-    return this.sellers$;
+  getAll() : Observable<Seller[]> {
+    return this.afs.collection(this.sellers).valueChanges();
   }
 
-  getById(id: string): FirebaseObjectObservable<Seller> {
-    const sellerPath = `${this.basePath}/${id}`;
+  getById(id: string): AngularFirestoreDocument<Seller> {
+    const sellerPath = `${this.sellers}/${id}`;
 
-    return this.db.object(sellerPath);
+    return this.afs.doc(sellerPath);
   }
 
-  createUserWithEmailAndPassword(seller: Seller): Observable<any> {
-    return Observable.of(this.auth.auth.createUserWithEmailAndPassword(seller.email, seller.password));
-  }
+
 
   update(seller: Seller): any {
-    const sellerPath = `${this.basePath}/${seller.seller_uid}`;
-    return this.db.object(sellerPath).update(seller);
+    const sellerPath = `${this.sellers}/${seller.seller_uid}`;
+    return this.afs.doc(sellerPath).update(seller);
   }
 
   delete(key: string): void {
-    this.sellers$.remove(key)
-      .catch(error => this.handleError(error))
+    // this.sellers$.(key)
+    //   .catch(error => this.handleError(error))
   }
 
   private handleError(error) {

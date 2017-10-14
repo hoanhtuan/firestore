@@ -5,6 +5,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { LoginFormComponent } from './login-page/login-form/login-form.component';
 import {FormsModule} from "@angular/forms";
+import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import {FormsModule} from "@angular/forms";
     AuthRoutingModule,
     FormsModule
   ],
-  declarations: [LoginPageComponent, LoginFormComponent]
+  declarations: [LoginPageComponent, LoginFormComponent],
+  providers: [Ng4LoadingSpinnerService]
 })
 export class AuthModule { }

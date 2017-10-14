@@ -15,6 +15,7 @@ import { NavBarComponent } from './_layouts/ui-elements/nav-bar/nav-bar.componen
 import { FooterComponent } from './_layouts/ui-elements/footer/footer.component';
 import { SimpleLayoutComponent } from './_layouts/simple-layout/simple-layout.component';
 import {RegisterModule} from "./register/register.module";
+import {AngularFirestoreModule} from "angularfire2/firestore";
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {RegisterModule} from "./register/register.module";
     AngularFireModule.initializeApp(environment.firebase, 'amex'), // imports firebase/app needed for everything
     AngularFireDatabaseModule, // imports firebase/database, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    AngularFirestoreModule,
     AppStoreModule,
     AuthModule,
     RegisterModule,

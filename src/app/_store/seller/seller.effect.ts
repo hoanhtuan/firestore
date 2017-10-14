@@ -5,44 +5,36 @@ import {Action, Store} from '@ngrx/store';
 
 import {ErrorAction} from '../shared/error/error.action';
 import {SellerService} from './seller.service';
-import {CreateSellerSuccessfulAction, GetAllSellersSuccessfulAction, SellerActionTypes} from './seller.action';
+import {
+  CreateSellerFailAction, CreateSellerSuccessfulAction, GetAllSellersSuccessfulAction,
+  SellerActionTypes
+} from './seller.action';
 import {of} from 'rxjs/observable/of';
 import {AuthService} from "../auth/auth.service";
 import {INITIAL_SELLER, Seller} from "./seller.model";
 import * as _ from 'lodash';
 import {AppState} from "../app.state";
 import {go} from "@ngrx/router-store";
+import "rxjs/add/operator/do";
+import {AngularFireAuth} from "angularfire2/auth";
 
 @Injectable()
 export class SellerEffect {
-  tempSeller: Seller = INITIAL_SELLER;
+  seller: Seller = _.cloneDeep(INITIAL_SELLER);
 
-  @Effect() create$ = this.actions$
+  @Effect() create$: Observable<Action> = this.actions$
     .ofType(SellerActionTypes.CREATE)
-    .map((action) => {
-      this.tempSeller = action.payload;
-      return action.payload;
+    .map((action: Action) => {
+      this.seller.email = action.payload.email;
+      this.seller.password = action.payload.password;
     })
-    .switchMap((payload) =>
-      this.sellerService.createUserWithEmailAndPassword(payload)
-        .switchMap((result) => result)
-        .switchMap(() => this.authService.signInWithEmailAndPassword(this.tempSeller.email, this.tempSeller.password))
-        .switchMap(() => this.authService.getUser())
-        .switchMap((user) => {
-          const newTempSeller: Seller = _.cloneDeep(this.tempSeller);
-          newTempSeller.seller_uid = user.uid;
-          newTempSeller.password = '';
-          return this.sellerService.update(newTempSeller);
-        })
-        .switchMap((user) =>{
-          this.store.dispatch(go(['home']))
-          return Observable.of(new CreateSellerSuccessfulAction(user))
-        })
-        .catch(error => {
-          this.store.dispatch(go(['seller_register/account']));
-          return Observable.of(new ErrorAction(error))
-        })
-    );
+    .switchMap(() => this.authService.createUserWithEmailAndPassword(this.seller)
+      .map((user) => new CreateSellerSuccessfulAction())
+      .catch(error => {
+        console.log(error);
+        return Observable.of(new ErrorAction(error));
+      })
+    )
 
   @Effect()
   getAll$: Observable<Action> = this.actions$
@@ -100,7 +92,8 @@ export class SellerEffect {
   constructor(private actions$: Actions,
               private sellerService: SellerService,
               private authService: AuthService,
-              private store: Store<AppState>) {
+              private store: Store<AppState>,
+              private afAuth: AngularFireAuth) {
   }
 
 }

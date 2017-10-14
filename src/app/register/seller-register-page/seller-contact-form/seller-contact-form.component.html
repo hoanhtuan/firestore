@@ -16,7 +16,6 @@
              class="form-control"
              name="street_address"
              [(ngModel)]="model.address.street_address"
-             required
              #street_address="ngModel">
       <div class="form-error"
            *ngIf="street_address.errors && (street_address.dirty || street_address.touched)">
@@ -33,7 +32,6 @@
              class="form-control"
              name="city"
              [(ngModel)]="model.address.city"
-             required
              #city="ngModel">
       <div class="form-error"
            *ngIf="city.errors && (city.dirty || city.touched)">
@@ -50,7 +48,6 @@
              class="form-control"
              name="state"
              [(ngModel)]="model.address.state"
-             required
              #state="ngModel">
       <div class="form-error"
            *ngIf="state.errors && (state.dirty || state.touched)">
@@ -67,7 +64,6 @@
              class="form-control"
              name="phone"
              [(ngModel)]="model.address.phone"
-             required
              #phone="ngModel">
       <div class="form-error"
            *ngIf="phone.errors && (phone.dirty || phone.touched)">
