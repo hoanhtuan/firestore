@@ -1,4 +1,4 @@
-import { Action } from '@ngrx/store';
+import {Action} from '@ngrx/store';
 
 export const GET_USER               = '[Auth] Get user';
 export const AUTHENTICATED          = '[Auth] Authenticated';

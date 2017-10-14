@@ -6,9 +6,6 @@ import {Observable} from 'rxjs/Observable';
 import * as userActions from './auth.action';
 import {AuthService} from './auth.service';
 import {ErrorAction} from "../shared/error/error.action";
-import {go} from "@ngrx/router-store";
-import {empty} from "rxjs/observable/empty";
-import {of} from "rxjs/observable/of";
 
 export type Action = userActions.All;
 
@@ -34,23 +31,26 @@ export class AuthEffect {
   @Effect()
   login$: Observable<Action> = this.actions$
     .ofType(userActions.EMAIL_LOGIN)
-    .switchMap(action => Observable.of(this.authService.signInWithEmailAndPassword(action.payload.email, action.payload.password)))
-    .switchMap(() => this.authService.getUser())
-    .map(authData => {
-      if (authData) {
-        /// User logged in
-        const user = new User(authData.uid, authData.displayName);
-        return new userActions.Authenticated(user);
-      } else {
-        /// User not logged in
-        //return new userActions.NotAuthenticated();
-        return new ErrorAction('ERRROOOOOOR....');
-      }
-    })
-    .catch(err => {
-      return Observable.of(new ErrorAction(err));
-    })
-  ;
+    .switchMap(action => this.authService.signInWithEmailAndPassword(action.payload.email, action.payload.password)
+      .switchMap(() => this.authService.getUser()
+        .map(authData => {
+          if (authData) {
+            console.log('login ok')
+            /// User logged in
+            const user = new User(authData.uid, authData.displayName);
+            return new userActions.Authenticated(user);
+          } else {
+            console.log('login fail')
+            /// User not logged in
+            return new userActions.NotAuthenticated();
+            //return new ErrorAction('ERRROOOOOOR....');
+          }
+        }))
+      .catch(err => {
+        console.log('login error')
+        return Observable.of(new ErrorAction(err));
+      })
+    )
 
   @Effect()
   logout$: Observable<Action> = this.actions$.ofType(userActions.LOGOUT)

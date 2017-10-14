@@ -10,8 +10,8 @@ export class AuthService {
   constructor(private db: AngularFireDatabase,
               private afAuth: AngularFireAuth) {}
 
-  createUserWithEmailAndPassword(user: Seller) {
-    return Observable.fromPromise(this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password));
+  createUserWithEmailAndPassword(email: string, password: string) {
+    return Observable.fromPromise(this.afAuth.auth.createUserWithEmailAndPassword(email, password));
   }
 
   getUser() {
@@ -19,7 +19,7 @@ export class AuthService {
   }
 
   signInWithEmailAndPassword(email, password) {
-    return this.afAuth.auth.signInWithEmailAndPassword(email, password);
+    return Observable.fromPromise(this.afAuth.auth.signInWithEmailAndPassword(email, password));
   }
 
   signOut() {

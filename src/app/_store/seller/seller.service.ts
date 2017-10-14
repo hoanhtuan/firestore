@@ -26,7 +26,9 @@ export class SellerService {
     return this.afs.doc(sellerPath);
   }
 
-
+  create(id: string, seller: Seller): any {
+    return Observable.fromPromise(this.afs.collection(this.sellers).doc(id).set(seller));
+  }
 
   update(seller: Seller): any {
     const sellerPath = `${this.sellers}/${seller.seller_uid}`;

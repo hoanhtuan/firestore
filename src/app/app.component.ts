@@ -21,24 +21,8 @@ import {Observable} from "rxjs/Observable";
 export class AppComponent {
   title = 'app';
   seller = INITIAL_SELLER;
-seller_test: Observable<Seller>;
   constructor(auth: AngularFireAuth,
               db: AngularFireDatabase,
               private store: Store<AuthState>,
-              private router: Router) {
-
-    router.events.subscribe((event) => {
-      if(event instanceof NavigationStart) {
-        this.store.dispatch(new ResetErrorAction());
-      }
-    });
-
-    //[TODO]: delete
-    store.dispatch(new GetAllSellersAction())
-    this.seller_test = this.store.select((state: any) => state.sellerState.sellers)
-    this.seller_test.subscribe((data:any)=> {
-      console.log('data',data);
-    })
-  }
-
+              private router: Router) {}
 }

@@ -8,8 +8,7 @@ export function errorReducer(state: ErrorState = INITIAL_ERROR_STATE, action: Ac
 
   switch (action.type) {
     case error.ActionTypes.ERROR_ACTION: return handleErrorAction(state, action);
-    case error.ActionTypes.ERROR_RESET_ACTION: return handleResetErrorAction(state, action);
-    default: return state;
+    default: return handleResetErrorAction (state, action);
   }
 
 }
