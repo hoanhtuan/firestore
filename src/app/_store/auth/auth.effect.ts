@@ -35,15 +35,9 @@ export class AuthEffect {
       .switchMap(() => this.authService.getUser()
         .map(authData => {
           if (authData) {
-            console.log('login ok')
             /// User logged in
             const user = new User(authData.uid, authData.displayName);
             return new userActions.Authenticated(user);
-          } else {
-            console.log('login fail')
-            /// User not logged in
-            return new userActions.NotAuthenticated();
-            //return new ErrorAction('ERRROOOOOOR....');
           }
         }))
       .catch(err => {
@@ -55,13 +49,9 @@ export class AuthEffect {
   @Effect()
   logout$: Observable<Action> = this.actions$.ofType(userActions.LOGOUT)
     .map((action: userActions.Logout) => action.payload)
-    .switchMap(payload => {
-      return Observable.of(this.authService.signOut());
-    })
-    .map(authData => {
-      return new userActions.NotAuthenticated();
-    })
-    .catch(err => Observable.of(new userActions.AuthError({error: err.message})));
+    .switchMap(payload => this.authService.signOut())
+    .map(authData => new userActions.NotAuthenticated())
+    .catch(err => Observable.of(new ErrorAction(err)));
 
   constructor(private actions$: Actions,
               private authService: AuthService) {
