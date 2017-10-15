@@ -7,6 +7,7 @@ import * as userActions from './auth.action';
 import {AuthService} from './auth.service';
 import {ErrorAction} from "../shared/error/error.action";
 import {Action} from "@ngrx/store";
+import {AngularFireAuth} from "angularfire2/auth";
 
 //export type Action = userActions.All;
 
@@ -47,16 +48,29 @@ export class AuthEffect {
       })
     )
 
-  @Effect()
-  logout$: Observable<Action> = this.actions$
-    .ofType(userActions.LOGOUT)
-    .switchMap(() => this.authService.signOut())
-    .map(() => new userActions.NotAuthenticated());
+  // @Effect()
+  // logout$: Observable<Action> = this.actions$
+  //   .ofType(userActions.LOGOUT)
+  //   .switchMap(() => this.authService.signOut())
+  //   .map(() => new userActions.NotAuthenticated())
+  //   .catch(err => Observable.of(new userActions.AuthError({error: err.message})));
 
-    //.catch(err => Observable.of(new userActions.AuthError({error: err.message})));
+  @Effect()
+  logout:  Observable<Action> = this.actions$
+    .ofType(userActions.LOGOUT)
+    .map((action: userActions.Logout) => action.payload )
+    .switchMap(payload => {
+      return Observable.of( this.afAuth.auth.signOut() );
+    })
+    .map( authData => {
+      return new userActions.NotAuthenticated();
+    })
+    .catch(err => Observable.of(new userActions.AuthError({error: err.message})) );
 
   constructor(private actions$: Actions,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private afAuth: AngularFireAuth
+              ) {
   }
 
 }

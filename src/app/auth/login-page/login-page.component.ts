@@ -18,7 +18,6 @@ export class LoginPageComponent{
   }
   onLogin(user) {
     if (user) {
-      console.log('user', user)
       this.store.dispatch(new EmailLogin(user));
     }
   }

@@ -3,6 +3,7 @@ import {Store} from "@ngrx/store";
 import {AppState} from "../../../_store/app.state";
 import {Observable} from "rxjs/Observable";
 import {GetUser, Logout} from "../../../_store/auth/auth.action";
+import * as userActions from '../../../_store/auth/auth.action';
 
 @Component({
   selector: 'app-nav-bar',
@@ -20,6 +21,6 @@ export class NavBarComponent implements OnInit{
   }
 
   logout(){
-    this.store.dispatch(new Logout());
+    this.store.dispatch(new userActions.Logout());
   }
 }
