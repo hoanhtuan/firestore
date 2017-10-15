@@ -6,8 +6,9 @@ import {Observable} from 'rxjs/Observable';
 import * as userActions from './auth.action';
 import {AuthService} from './auth.service';
 import {ErrorAction} from "../shared/error/error.action";
+import {Action} from "@ngrx/store";
 
-export type Action = userActions.All;
+//export type Action = userActions.All;
 
 @Injectable()
 export class AuthEffect {
@@ -47,11 +48,12 @@ export class AuthEffect {
     )
 
   @Effect()
-  logout$: Observable<Action> = this.actions$.ofType(userActions.LOGOUT)
-    .map((action: userActions.Logout) => action.payload)
-    .switchMap(payload => this.authService.signOut())
-    .map(authData => new userActions.NotAuthenticated())
-    .catch(err => Observable.of(new ErrorAction(err)));
+  logout$: Observable<Action> = this.actions$
+    .ofType(userActions.LOGOUT)
+    .switchMap(() => this.authService.signOut())
+    .map(() => new userActions.NotAuthenticated());
+
+    //.catch(err => Observable.of(new userActions.AuthError({error: err.message})));
 
   constructor(private actions$: Actions,
               private authService: AuthService) {

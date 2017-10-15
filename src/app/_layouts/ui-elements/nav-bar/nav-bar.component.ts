@@ -20,6 +20,6 @@ export class NavBarComponent implements OnInit{
   }
 
   logout(){
-    this.store.dispatch(new Logout);
+    this.store.dispatch(new Logout());
   }
 }

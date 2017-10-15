@@ -11,16 +11,16 @@ export class LoginFormComponent {
   @ViewChild('f') form: NgForm;
   @Input() model: any = {user:'', password:''};
   @Input() error = '';
-  @Output() submit = new EventEmitter();
+  @Output() login = new EventEmitter();
 
   constructor() {
     this.model = _.cloneDeep(this.model);
   }
 
-  onSubmit() {
+  onLogin() {
     if (this.form.valid) {
       this.error = '';
-      this.submit.emit(this.form.value);
+      this.login.emit(this.form.value);
     }
   }
 }

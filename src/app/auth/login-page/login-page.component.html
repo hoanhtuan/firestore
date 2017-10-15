@@ -1,2 +1,2 @@
-<login-form [model]="model" (submit)="onSubmit($event)"  [error]="error$ | async"></login-form>
+<login-form (login)="onLogin($event)"  [error]="error$ | async"></login-form>
 <!--<app-spinner> </app-spinner>-->

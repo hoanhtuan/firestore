@@ -15,7 +15,7 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(new GetUser())
+   // this.store.dispatch(new GetUser())
   }
 
 }

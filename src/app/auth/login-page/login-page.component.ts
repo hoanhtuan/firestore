@@ -11,14 +11,14 @@ import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent{
-  model: any = {user: 'test', password: 'test'};
+  model: any;
   error$: Observable<string>;
   constructor(private store: Store<AppState>,  private spinnerService: Ng4LoadingSpinnerService) {
     this.error$ = this.store.select((state: AppState) => state.errorState.errorMessage);
   }
-  onSubmit(user) {
-    this.spinnerService.show();
+  onLogin(user) {
     if (user) {
+      console.log('user', user)
       this.store.dispatch(new EmailLogin(user));
     }
   }

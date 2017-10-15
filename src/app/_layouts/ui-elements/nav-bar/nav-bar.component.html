@@ -15,12 +15,12 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="wp-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-nav-menu">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="about-us.html">About Us</a></li>
-        <li><a href="faqs.html">FAQs</a></li>
+        <li class="active"><a [routerLink]="['/home']">Home</a></li>
+        <li><a [routerLink]="['/home']">About Us</a></li>
+        <li><a [routerLink]="['/home']">FAQs</a></li>
         <li><a [routerLink]="['/seller_register']">Join as Seller</a></li>
         <li><a *ngIf="!(uid$ | async)" [routerLink]="['/login']">Login</a></li>
-        <li><a *ngIf="!!(uid$ | async)" (click)="logout()">Logout</a></li>
+        <li><a *ngIf="!!(uid$ | async)" [routerLink]="['/home']" (click)="logout()">Logout</a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse -->
