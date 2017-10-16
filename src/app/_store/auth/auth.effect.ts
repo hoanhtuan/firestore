@@ -17,18 +17,20 @@ export class AuthEffect {
   @Effect()
   getUser$: Observable<Action> = this.actions$
     .ofType(userActions.GET_USER)
-    .switchMap(() => this.authService.getUser())
-    .map(authData => {
-      if (authData) {
-        /// User logged in
-        const user = new User(authData.uid, authData.displayName);
-        return new userActions.Authenticated(user);
-      } else {
-        /// User not logged in
-        return new userActions.NotAuthenticated();
-      }
-    })
-    .catch(err => Observable.of(new userActions.AuthError()));
+    .switchMap(() => this.authService.getUser()
+      .map(authData => {
+        if (authData) {
+          /// User logged in
+          const user = new User(authData.uid, authData.displayName);
+          return new userActions.Authenticated(user);
+        } else {
+          /// User not logged in
+          return new userActions.NotAuthenticated();
+        }
+      })
+      .catch(err => Observable.of(new userActions.AuthError()))
+    )
+
 
   @Effect()
   login$: Observable<Action> = this.actions$
@@ -56,21 +58,21 @@ export class AuthEffect {
   //   .catch(err => Observable.of(new userActions.AuthError({error: err.message})));
 
   @Effect()
-  logout:  Observable<Action> = this.actions$
+  logout: Observable<Action> = this.actions$
     .ofType(userActions.LOGOUT)
-    .map((action: userActions.Logout) => action.payload )
+    .map((action: userActions.Logout) => action.payload)
     .switchMap(payload => {
-      return Observable.of( this.afAuth.auth.signOut() );
+      return Observable.fromPromise(this.afAuth.auth.signOut())
+        .map(authData => {
+          return new userActions.NotAuthenticated();
+        })
+        .catch(err => Observable.of(new userActions.AuthError({error: err.message})))
     })
-    .map( authData => {
-      return new userActions.NotAuthenticated();
-    })
-    .catch(err => Observable.of(new userActions.AuthError({error: err.message})) );
+
 
   constructor(private actions$: Actions,
               private authService: AuthService,
-              private afAuth: AngularFireAuth
-              ) {
+              private afAuth: AngularFireAuth) {
   }
 
 }
