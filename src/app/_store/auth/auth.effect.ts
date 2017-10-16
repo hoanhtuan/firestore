@@ -60,14 +60,12 @@ export class AuthEffect {
   @Effect()
   logout: Observable<Action> = this.actions$
     .ofType(userActions.LOGOUT)
-    .map((action: userActions.Logout) => action.payload)
-    .switchMap(payload => {
-      return Observable.fromPromise(this.afAuth.auth.signOut())
-        .map(authData => {
+    .switchMap(() => this.authService.signOut()
+        .map(() => {
           return new userActions.NotAuthenticated();
         })
         .catch(err => Observable.of(new userActions.AuthError({error: err.message})))
-    })
+    )
 
 
   constructor(private actions$: Actions,
